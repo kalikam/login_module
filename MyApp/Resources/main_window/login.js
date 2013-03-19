@@ -40,7 +40,7 @@ loginBtn.addEventListener('click',function(e)
     if (username.value != '' && password.value != '')  
     {alert(username.value);
 	  
-       loginReq.open("POST","post_auth.php");  
+       loginReq.open("POST","http://localhost:8020/post_auth.php");  
        loginReq.send();
        loginReq.onload = function(){  
        alert(this.responseText);  
