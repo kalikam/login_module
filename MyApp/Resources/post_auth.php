@@ -1,5 +1,6 @@
     <?php
-echo "teri maa ki";    // Connect to the database(host, username, password)  
+echo "kalika prasad mishra";
+        // Connect to the database(host, username, password)  
  /*   $con = mysql_connect('localhost','root','');  
     if (!$con)  
     {  
