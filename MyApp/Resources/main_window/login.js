@@ -35,28 +35,39 @@ var loginBtn = Titanium.UI.createButton({
 win.add(loginBtn); 
 var loginReq = Titanium.Network.createHTTPClient();  
 loginBtn.addEventListener('click',function(e)  
-{   alert(username.value);
-	alert(password.value);
+{  
     if (username.value != '' && password.value != '')  
-    {alert(username.value);
-	  
-       loginReq.open("POST","http://localhost:8020/post_auth.php");  
-       loginReq.send();
-       loginReq.onload = function(){  
-       alert(this.responseText);  
-      }; 
+    {  
+        loginReq.open("POST","http://techmongoose.co.in/kalika/post_auth.php");  
        
-      //  alert(loginReq.open("POST","http://127.0.0.1:8020/post_auth.php"));
-       
-        /*var params = {  
+         var params = {  
             username: username.value,  
-            password: password.value,   
-        };  
-        loginReq.send(params); */ 
-    }  
+            password:password.value  
+        }; 
+     loginReq.send(params);  
+     loginReq.onload = function()  
+    {  
+        var json = this.responseData;  
+        Ti.API.info(json);
+response = JSON.parse(json);        
+        if (response.logged == true)  
+        {  
+            Ti.API.info("Welcome " + response.name + ". Your email is: ");  
+             
+            
+       
+        }  
+        else  
+        {  
+            alert(response.message);  
+        }  
+    };  
+     
+     
+     
+     }  
     else  
     {  
-        alert("Username/Password are required");
-           
+        alert("Username/Password are required");  
     }  
 }); 
